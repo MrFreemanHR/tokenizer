@@ -257,7 +257,8 @@ func (p *parsing) parseKeyword() bool {
 			(p.t.flags&fAllowKeywordUnderscore != 0 && p.curr == '_') ||
 			(p.t.flags&fAllowNumberInKeyword != 0 && start != -1 && isNumberByte(p.curr)) ||
 			(p.t.flags&fAllowAtInKeyword != 0 && p.curr == '@') ||
-			(p.t.flags&fAllowDotInKeyword != 0 && p.curr == '.') {
+			(p.t.flags&fAllowDotInKeyword != 0 && p.curr == '.') ||
+			(p.t.flags&fAllowSlashInKeyword != 0 && p.curr == '/') {
 
 			if start == -1 {
 				start = p.pos
