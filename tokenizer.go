@@ -42,6 +42,7 @@ const (
 	fAllowAtInKeyword       uint16 = 0b10000
 	fAllowDotInKeyword      uint16 = 0b100000
 	fAllowSlashInKeyword    uint16 = 0b1000000
+	fAllowAsteriskInKeyword uint16 = 0b10000000
 )
 
 // BackSlash just backslash byte
@@ -180,6 +181,14 @@ func (t *Tokenizer) AllowDotInKeyword() *Tokenizer {
 // There should be no spaces between letters and slashes.
 func (t *Tokenizer) AllowSlashInKeyword() *Tokenizer {
 	t.flags |= fAllowSlashInKeyword
+	return t
+}
+
+// AllowAsteriskInKeyword allows symbol '*' in keywords
+// The method allows asterisks in keywords, but the keyword itself must not start with a asterisk.
+// There should be no spaces between letters and asterisks.
+func (t *Tokenizer) AllowAsteriskInKeyword() *Tokenizer {
+	t.flags |= fAllowAsteriskInKeyword
 	return t
 }
 
